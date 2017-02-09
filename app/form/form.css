@@ -1,0 +1,107 @@
+.form-page {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+.form {
+  padding: 20px;
+}
+.form-info {
+  margin-bottom: 24px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+.name {
+  color: #666;
+}
+.form-group .form-control {
+  padding: 12px;
+  height: 36px;
+}
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+  top: -4px;
+}
+.label {
+  border-radius: 10px;
+}
+.label-High {
+  background-color: red;
+}
+.label-Medium {
+  background-color: orange;
+}
+.label-Low {
+  background-color: green;
+}
+
+.btn-cancel {
+  background-color: #eee;
+  color: #666;
+}
+.common-issue {
+  margin-right: 85px;
+}
+
+.btn-browse {
+  display: block;
+  width: 75px;
+  height: 36px;
+  float: right;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #eee;
+  color: #666;
+}
+
+.file-name {
+  margin-top: 10px;
+  color: #999;
+  font-size: 14px;
+}
+
+
+.footer {
+  position: fixed;
+  text-align: right;
+  width: 100%;
+  padding: 20px;
+  bottom: 0;
+  border-top: 1px solid #ccc;
+  font-size: 0;
+  background-color: #fff;
+}
+
+/* overwrite the typeahead style */
+.twitter-typeahead {
+  display: block!important;
+}
+.tt-menu {
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  width: 100%;
+  background-color: #fff;
+}
+.tt-suggestion {
+  padding: 10px;
+  margin: 0;
+}
+
+.tt-suggestion:hover {
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.tt-suggestion.tt-cursor {
+  background-color: #eee;
+}
+
+/* utils */
+.red {
+  color: #f00;
+}

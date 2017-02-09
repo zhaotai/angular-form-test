@@ -1,0 +1,50 @@
+<div class="form-page">
+  <form class="form" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+    <div class="form-info red"><span>* Required Field</span></div>
+
+    <div class="form-group">
+      <label class="name">Affected User(s) <span class="red">*</span></label>
+      <input type="text" name="affectedUser" class="typeahead form-control" sf-typeahead options="exampleOptions" datasets="numbersDataset" ng-model="form.affectedUser" required>
+    </div>
+
+    <div class="form-group">
+      <label class="name">Affected Company <span class="red">*</span></label>
+      <input type="text" name="companyName" class="form-control" ng-model="form.companyName" required>
+    </div>
+
+    <div class="form-group">
+      <label class="name">Incident Template</label>
+      <div>
+        <span class="btn btn-browse" ngf-select="upload($file)" ng-model="file" name="file" ngf-max-size="20MB">Browse</span>
+        <div class="common-issue">
+          <input type="text" name="Name" class="form-control" placeholder="Start typing the name of a common issue" ng-model="form.commonIssue">
+        </div>
+        <div ng-if="file" class="file-name">Template name: {{file.name}}</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="form.isAuto">
+          <span class="name">Auto-assign this task to the best fit group</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="name">Incident Title <span class="red">*</span></label>
+      <input type="text" name="incidentTitle" class="form-control" placeholder="Type a title for this incident" ng-model="form.incidentTitle" required>
+    </div>
+
+    <div class="form-info">
+      <span class="name">Calculated Priority:</span>
+      <span class="label label-{{form.priority}}">{{form.priority}}</span>
+    </div>
+  </form>
+  <div class="footer">
+    <button type="submit" class="btn btn-cancel" style="margin-right: 10px;">Cancel</button>
+    <button type="submit" ng-disabled="!userForm.$valid || saving" ng-click="save(form)" class="btn btn-info">Save</button>
+  </div>
+
+</div>
