@@ -5,11 +5,25 @@ module.exports = function(config) {
     basePath: './app',
 
     files: [
-      'bower_components/angular/angular.js',
-      'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      'components/**/*.js',
-      'view*/**/*.js'
+  "libs/jquery/dist/jquery.min.js",
+"libs/angular/angular.js",
+"libs/angular-mocks/angular-mocks.js",
+"libs/angular-loader/angular-loader.js",
+"libs/ng-file-upload/ng-file-upload-shim.min.js",
+"libs/ng-file-upload/ng-file-upload.min.js",
+"libs/angular-route/angular-route.js",
+"libs/typeahead.js/dist/typeahead.jquery.min.js",
+"libs/typeahead.js/dist/typeahead.bundle.min.js",
+"libs/typeahead.js/dist/bloodhound.min.js",
+"libs/angular-typeahead/dist/angular-typeahead.min.js",
+"libs/handlebars/handlebars.min.js",
+"libs/angular-spinner/dist/angular-spinner.min.js",
+"app.js",
+"components/my-typeahead/typeahead-directive.js",
+"services/api.js",
+"form/form.js",
+"libs/ng-notify/dist/ng-notify.min.js",
+"**/*_test.js"
     ],
 
     autoWatch: true,

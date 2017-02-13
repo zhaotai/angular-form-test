@@ -17,15 +17,32 @@
   margin-bottom: 10px;
   font-weight: normal;
 }
+.form-control {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.form-control:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border-color: #ccc;
+}
+.input-group {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.input-group .form-control {
+  border: 0;
+}
 .name {
   color: #666;
 }
 .form-group .form-control {
-  padding: 12px;
   height: 36px;
 }
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
-  top: -4px;
+  top: -3px;
 }
 .label {
   border-radius: 10px;
@@ -59,6 +76,19 @@
   color: #666;
 }
 
+.close-icon {
+  display: inline-block;
+  width: 26px;
+  line-height: 36px;
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+  cursor: pointer;
+}
+.close-icon:hover {
+  color: #999;
+}
+
 .file-name {
   margin-top: 10px;
   color: #999;
@@ -81,10 +111,20 @@
 .twitter-typeahead {
   display: block!important;
 }
+.twitter-typeahead:before {
+  content: " ";
+  display: table;
+}
+.twitter-typeahead:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
 .tt-menu {
   border: 1px solid #ddd;
   border-radius: 2px;
-  width: 100%;
+  left: -1px!important;
+  right: -27px;
   background-color: #fff;
 }
 .tt-suggestion {

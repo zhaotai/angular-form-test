@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.form', ['ngRoute', 'siyfion.sfTypeahead', 'ngFileUpload'])
+angular.module('myApp.form', ['siyfion.sfTypeahead', 'ngFileUpload'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/form', {
@@ -9,29 +9,20 @@ angular.module('myApp.form', ['ngRoute', 'siyfion.sfTypeahead', 'ngFileUpload'])
   });
 }])
 
-.controller('FormCtrl', ['$scope', 'Upload', 'API', function($scope, Upload, API) {
-  var numbers = new Bloodhound({
-    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: [
-      { name: 'Allen Albort', img: 'http://brightcove04.o.brightcove.com/1362235914001/1362235914001_4806146059001_video-still-for-video-4805957335001.jpg?pubId=1362235914001', email: '123@hotmail.com', companyName: 'Petremco' },
-      { name: 'Aclen Albort', img: 'http://brightcove04.o.brightcove.com/1362235914001/1362235914001_4806146059001_video-still-for-video-4805957335001.jpg?pubId=1362235914001', email: '123@hotmail.com', companyName: 'Petremco' },
-      { name: 'Adlen Albort', img: 'http://brightcove04.o.brightcove.com/1362235914001/1362235914001_4806146059001_video-still-for-video-4805957335001.jpg?pubId=1362235914001', email: '123@hotmail.com', companyName: 'Petremco' },
-      { name: 'Aelen Albort', img: 'http://brightcove04.o.brightcove.com/1362235914001/1362235914001_4806146059001_video-still-for-video-4805957335001.jpg?pubId=1362235914001', email: '123@hotmail.com', companyName: 'Petremco' },
-      { name: 'Aflen Albort', img: 'http://brightcove04.o.brightcove.com/1362235914001/1362235914001_4806146059001_video-still-for-video-4805957335001.jpg?pubId=1362235914001', email: '123@hotmail.com', companyName: 'Petremco' },
-      { name: 'Aglen Albort', img: 'http://brightcove04.o.brightcove.com/1362235914001/1362235914001_4806146059001_video-still-for-video-4805957335001.jpg?pubId=1362235914001', email: '123@hotmail.com', companyName: 'Petremco' },
-    ]
-  });
-
-  // initialize the bloodhound suggestion engine
-  numbers.initialize();
-
+.controller('FormCtrl', ['$scope', 'Upload', 'API', 'ngNotify', function($scope, Upload, API, ngNotify) {
   $scope.numbersDataset = {
     displayKey: 'name',
     classNames: {
       selectable: 'selectable'
     },
-    source: numbers.ttAdapter(),
+    source: function(query, syncResults, asyncResults) {
+      if (query.length > 3) {
+        API.getUsers().then(function(res) {
+          var data = res.data;
+          asyncResults(data);
+        });
+      }
+    },
     templates: {
       suggestion: Handlebars.compile(
         '<div class="media" style="color: #666;">' +
@@ -88,16 +79,14 @@ angular.module('myApp.form', ['ngRoute', 'siyfion.sfTypeahead', 'ngFileUpload'])
     $scope.$emit('loading:on');
     API.save(form)
       .then(function(res) {
-
-      })
-      .catch(function(err) {
-
+        ngNotify.set('save succeed!', 'success');
+      }, function(err) {
+        ngNotify.set('save failed', 'error');
       })
       .finally(function(res) {
         $scope.saving = false;
         $scope.$emit('loading:off');
       });
-    console.log(form);
   };
 
 }]);

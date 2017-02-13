@@ -13,14 +13,11 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $routeProvider.otherwise({redirectTo: '/form'});
 }])
 .controller('AppCtrl', ['$scope', 'ngNotify', 'usSpinnerService', function($scope, ngNotify, usSpinnerService) {
-  $scope.showSpinner = true;
+  $scope.showSpinner = false;
   $scope.$on('loading:on', function() {
-    usSpinnerService.spin('spinner-global');
+    $scope.showSpinner = true;
   });
   $scope.$on('loading:off', function() {
-    usSpinnerService.stop('spinner-global');
-  });
-  $scope.$on('notify', function(content, type) {
-    ngNotify.set(content, type);
+    $scope.showSpinner = false;
   });
 }]);
