@@ -15,6 +15,7 @@ angular.module('myApp.form', ['siyfion.sfTypeahead', 'ngFileUpload'])
     classNames: {
       selectable: 'selectable'
     },
+    limit: 3,
     source: function(query, syncResults, asyncResults) {
       if (query.length > 3) {
         API.getUsers().then(function(res) {
