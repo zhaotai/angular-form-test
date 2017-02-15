@@ -37,25 +37,12 @@ We have two kinds of dependencies in this project: tools and Angular framework c
 us manage and test the application.
 
 * We get the tools we depend upon via `npm`, the [Node package manager][npm].
-* We get the Angular code via `bower`, a [client-side code package manager][bower].
-* In order to run the end-to-end tests, you will also need to have the
-  [Java Development Kit (JDK)][jdk] installed on your machine. Check out the section on
-  [end-to-end testing](#e2e-testing) for more info.
-
-We have preconfigured `npm` to automatically run `bower` so we can simply do:
 
 ```
 npm install
 ```
 
-Behind the scenes this will also call `bower install`. After that, you should find out that you have
-two new folders in your project.
-
 * `node_modules` - contains the npm packages for the tools we need
-
-*Note that the `bower_components` folder would normally be installed in the root folder but
-`angular-form-test` changes this location through the `.bowerrc` file. Putting it in the `app` folder
-makes it easier to serve the files by a web server.*
 
 ### Run the Application
 
@@ -89,10 +76,7 @@ app/                    --> all of the source files for the application
     **/*.js
   app.js                --> main application module
   index.html            --> app layout file (the main html template file of the app)
-karma.conf.js         --> config file for running unit tests with Karma
-e2e-tests/            --> end-to-end tests
-  protractor-conf.js    --> Protractor config file
-  scenarios.js          --> end-to-end scenarios to be run by Protractor
+karma.conf.js         --> config file for running unit tests with Karma`
 ```
 
 
@@ -128,18 +112,3 @@ predefined script to do this:
 ```
 npm run test-single-run
 ```
-
-
-<a name="e2e-testing"></a>
-### Running End-to-End Tests
-
-The `angular-form-test` app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
-are run with the [Protractor][protractor] End-to-End test runner. It uses native events and has
-special features for Angular applications.
-
-* The configuration is found at `e2e-tests/protractor-conf.js`.
-* The end-to-end tests are found in `e2e-tests/scenarios.js`.
-
-Protractor simulates interaction with our web app and verifies that the application responds
-correctly. Therefore, our web server needs to be serving up the application, so that Protractor can
-interact with it.

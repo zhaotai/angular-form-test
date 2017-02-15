@@ -7,11 +7,11 @@ module.exports = function(config) {
     files: [
   "libs/jquery/dist/jquery.min.js",
 "libs/angular/angular.js",
+"libs/angular-route/angular-route.js",
 "libs/angular-mocks/angular-mocks.js",
 "libs/angular-loader/angular-loader.js",
 "libs/ng-file-upload/ng-file-upload-shim.min.js",
 "libs/ng-file-upload/ng-file-upload.min.js",
-"libs/angular-route/angular-route.js",
 "libs/typeahead.js/dist/typeahead.jquery.min.js",
 "libs/typeahead.js/dist/typeahead.bundle.min.js",
 "libs/typeahead.js/dist/bloodhound.min.js",

@@ -4,7 +4,7 @@ angular.module('myApp.form', ['siyfion.sfTypeahead', 'ngFileUpload'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/form', {
-    templateUrl: 'form/form.html',
+    templateUrl: '/form/form.html',
     controller: 'FormCtrl'
   });
 }])
@@ -61,13 +61,13 @@ angular.module('myApp.form', ['siyfion.sfTypeahead', 'ngFileUpload'])
   $scope.upload = function (file) {
     Upload.upload({
       url: 'upload/url',
-      data: {file: file, 'username': $scope.username}
+      data: { file: file }
     }).then(function (resp) {
-      console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+      $scope.form.templateUrl = resp.data.data.url; // <= this string represented the url which returned in response
+      console.log('Success Upload');
     }, function (resp) {
       // assume it succeed, assign the url from response into form.
-      $scope.form.templateUrl = 'https://xxx.xxx.xxx/file'; // <= this string represented the url which returned in response
-      console.log('Error status: ' + resp.status);
+      console.log('Error status: ' + resp.errorCode);
     }, function (evt) {
       var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
       console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);

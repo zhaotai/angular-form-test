@@ -15,19 +15,9 @@
     "protractor": "^4.0.9"
   },
   "scripts": {
-
     "update-deps": "npm update",
-    "postupdate-deps": "bower update",
-
     "start": "http-server -a localhost -p 8000 -c-1 ./app",
-
     "test": "karma start karma.conf.js",
-    "test-single-run": "karma start karma.conf.js --single-run",
-
-    "preupdate-webdriver": "npm install",
-    "update-webdriver": "webdriver-manager update",
-
-    "preprotractor": "npm run update-webdriver",
-    "protractor": "protractor e2e-tests/protractor.conf.js"
+    "test-single-run": "karma start karma.conf.js --single-run"
   }
 }
